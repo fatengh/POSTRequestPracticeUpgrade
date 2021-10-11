@@ -8,11 +8,11 @@
     tools:context=".MainActivity"
     android:padding="8dp">
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnUPDEl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:text="view"
+        android:padding="16dp"
+        android:text="Update or Delete"
         />
 
     <Button

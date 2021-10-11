@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var responseText: TextView
     private lateinit var btnadd: Button
+    private lateinit var btnUPDEl: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         responseText = findViewById(R.id.tView)
         btnadd = findViewById(R.id.btnadd)
+        btnUPDEl = findViewById(R.id.btnUPDEl)
 
         val apiinter = ApiClient().getClient()?.create(ApiInterface::class.java)
 
@@ -31,9 +33,9 @@ class MainActivity : AppCompatActivity() {
                     response: Response<List<Users.UserDeta>>
                 ) {
 
-                    var datas: String? = "";
+                    var datas: String? = ""
                     for (User in response.body()!!) {
-                        datas = datas + "${User.name} \n ${User.location} \n \n"
+                        datas = datas + "ID :${User.pk} \n ${User.name} \n ${User.location} \n \n"
                     }
                     responseText.text = datas
                 }
@@ -46,6 +48,10 @@ class MainActivity : AppCompatActivity() {
 
         btnadd.setOnClickListener {
             intent = Intent(applicationContext, MainActivity2::class.java)
+            startActivity(intent)
+        }
+        btnUPDEl.setOnClickListener {
+            intent = Intent(applicationContext, MainActivity3::class.java)
             startActivity(intent)
         }
     }

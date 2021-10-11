@@ -11,7 +11,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity2 : AppCompatActivity() {
-
+    private lateinit var id: EditText
     private lateinit var name: EditText
     private lateinit var location: EditText
     private lateinit var btnSave: Button
@@ -21,14 +21,14 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
+        id = findViewById(R.id.etId)
         name = findViewById(R.id.etName)
         location = findViewById(R.id.etLocation)
         btnSave = findViewById(R.id.btnSave)
         btnView = findViewById(R.id.btnView)
 
         btnSave.setOnClickListener {
-
-            var f = Users.UserDeta(name.text.toString(), location.text.toString())
+            var f = Users.UserDeta( name.text.toString(),location.text.toString(), id.text.toString().toInt())
             val apiInterface = ApiClient().getClient()?.create(ApiInterface::class.java)
 
             if (apiInterface != null) {

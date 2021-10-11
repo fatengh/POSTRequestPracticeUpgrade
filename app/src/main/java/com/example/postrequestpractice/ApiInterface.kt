@@ -1,10 +1,7 @@
 package com.example.postrequestpractice
 
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 
 interface ApiInterface {
@@ -17,5 +14,15 @@ interface ApiInterface {
     @Headers("Content-Type: application/json")
     @POST("/test/")
     fun addUser(@Body userData: Users.UserDeta): Call<Users.UserDeta>
+
+    @Headers("Content-Type: application/json")
+    @PUT("/test/{id}")
+    fun UpdateUser(@Path( "id")id: Int, @Body  userData: Users.UserDeta): Call<Users.UserDeta>
+
+
+    @Headers("Content-Type: application/json")
+    @DELETE ("/test/{id}")
+    fun deleteUser(@Path("id")id:Int):Call<Void>
+
 
 }
